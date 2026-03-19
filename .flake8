@@ -1,5 +1,0 @@
-[flake8]
-max-line-lenght = 88
-exclude = venv
-ignore = E,W
-select = E302, W293
