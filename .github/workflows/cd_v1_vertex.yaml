@@ -1,0 +1,43 @@
+name: Deploy VERTEX PIPELINE
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup gcloud CLI
+        uses: google-github-actions/setup-gcloud@v0
+        with:
+          project_id: ${{ secrets.GOOGLE_PROJECT }}
+          service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+          install_components: 'gke-gcloud-auth-plugin'
+          export_default_credentials: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.8'
+ 
+
+      - name: Install dependencies
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install -requirements.txt
+          pip install jupyter
+
+      - name: Register Jupyter Kernel
+        run: |
+          source venv/bin/activate
+          python -m ipkernel install --user --name=venv
+
+      - name: Execute Noteboock
+        run: |
+          source venv/bin/activate
+          papermill my_app/pipeline_bigquery_component.ipynb my_app/output.ipynb -k venv
