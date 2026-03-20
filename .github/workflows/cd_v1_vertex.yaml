@@ -37,7 +37,7 @@ jobs:
       - name: Register Jupyter Kernel
         run: |
           source venv/bin/activate
-          python -m ipkernel install --user --name=venv
+          python -m ipykernel install --user --name=venv
 
       - name: Execute Noteboock
         run: |
