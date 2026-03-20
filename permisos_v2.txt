@@ -1,7 +1,7 @@
-PROJECT_ID="<PROJECT_ID>"
-SA_GITHUB="<SA_GITHUB>"
-SA_VERTEX="<SA_VERTEX>"
-SA_CLOUD_RUN="<SA_CLOUD_RUN>"
+PROJECT_ID="mlops-test-487414"
+SA_GITHUB="github-actions@mlops-test-487414.iam.gserviceaccount.com"
+SA_VERTEX="vertex-ia-procces@mlops-test-487414.iam.gserviceaccount.com"
+SA_CLOUD_RUN="cloudrun-ml-sa@mlops-test-487414.iam.gserviceaccount.com"
 
 #PIPELINE VERTEX
 
