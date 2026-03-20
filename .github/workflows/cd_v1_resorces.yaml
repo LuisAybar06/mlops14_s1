@@ -1,8 +1,9 @@
-name: Terraform
+name: Deploy Terraform
 
 on:
-  workflow_dispatch:
-
+  push:
+    branches:
+      - main
 
 jobs:
   deploy:
@@ -19,11 +20,12 @@ jobs:
           install_components: 'gke-gcloud-auth-plugin'
           export_default_credentials: true
 
+
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
           python-version: '3.8'
- 
+
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
